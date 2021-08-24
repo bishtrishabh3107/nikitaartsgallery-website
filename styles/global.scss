@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.backgoundBrush {
+  background-image: url(../public/brushes_background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.backgoundColoured {
+  background-image: url(../public/colored_background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.backgoundSkyNight {
+  background-image: url(../public/sky_night_background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.backgoundWood {
+  background-image: url(../public/wood_background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+.nikitaFont {
+  font-family: 'Dancing Script', cursive;
+}
