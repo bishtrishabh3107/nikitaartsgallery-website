@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/client';
 import Image from 'next/image';
-import { AiOutlineRollback } from 'react-icons/Ai';
+import { AiOutlineRollback } from 'react-icons/ai';
 import { Box } from '@chakra-ui/react';
-import ReactMarkdown from 'react-markdown';
-import { FaInstagram } from 'react-icons/Fa';
+import { FaInstagram } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { Spinner } from '@chakra-ui/react';
 
-function index() {
+function Index() {
   const router = useRouter();
   const { id } = router.query;
 
@@ -34,8 +34,15 @@ function index() {
   const { error, data, loading } = useQuery(PaintingByIdQuery);
   if (loading) {
     return (
-      <div>
-        <p>Relax, it's worth the wait...</p>
+      <div className="m-10 flex flex-row">
+        <p className="mx-10 text-gray-500">Relax, it's worth the wait...</p>
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
       </div>
     ); // loading state
   }
@@ -50,7 +57,7 @@ function index() {
       transition={{ duration: 0.8 }}
     >
       <div className="mx-3 mt-3 p-2 md:p-6 lg:p-8 xl:p-10">
-        <Link href="/">
+        <Link href="/" passHref>
           <div className="text-gray-500 lg:text-lg font-bold">
             <AiOutlineRollback />
           </div>
@@ -71,6 +78,7 @@ function index() {
                       layout="responsive"
                       height={400}
                       width={400}
+                      alt={el.name}
                     />
                   </div>
                 </Box>
@@ -83,6 +91,7 @@ function index() {
                       layout="responsive"
                       height={400}
                       width={400}
+                      alt={el.name}
                     />
                   </div>
                 </Box>
@@ -95,7 +104,7 @@ function index() {
                     {el.name}
                   </div>
                   <div className="text-gray-400 text-left md:text-base lg:text-lg xl:text-xl font-medium p-2 text-left text-sm">
-                    <ReactMarkdown>{el.description}</ReactMarkdown>
+                    <p>{el.description}</p>
                   </div>
                 </header>
                 <footer className="text-gray-500 flex items-center justify-between leading-none p-2">
@@ -128,4 +137,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

@@ -6,7 +6,7 @@ import Link from 'next/link';
 function NikiArtsGalleryIcon() {
   return (
     <div>
-      <Link href="/">
+      <Link href="/" passHref>
         <div className="flex flex-row cursor-pointer">
           <h1 className="nikitaFont lg:mx-1 text-xl font-bold text-blue-400 xl:text-4xl lg:text-3xl md:text-2xl">
             NIKI

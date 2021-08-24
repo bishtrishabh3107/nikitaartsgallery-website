@@ -38,7 +38,7 @@ function SecondScreen() {
       </div>
       <div className="p-2 md:p-6 lg:p-8 xl:p-10 grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-3 lg:gap-6 xl:grid-cols-3 xl:gap-8">
         {data.paintings.map((el) => (
-          <div>
+          <div key={el.paintingID}>
             <Fade>
               <PaintingCard
                 paintingID={el.paintingID}

@@ -48,12 +48,17 @@ function BestSeller() {
         {data.paintings.map((el) => (
           <div key={el.paintingID}>
             <div className="mx-2 cursor-pointer shadow-md rounded-md">
-              <Link href="/paintings/[id]" as={`/paintings/${el.paintingID}`}>
+              <Link
+                href="/paintings/[id]"
+                as={`/paintings/${el.paintingID}`}
+                passHref
+              >
                 <Image
                   src={el.image.url}
                   width={200}
                   height={200}
                   layout="responsive"
+                  alt={el.name}
                 />
               </Link>
             </div>

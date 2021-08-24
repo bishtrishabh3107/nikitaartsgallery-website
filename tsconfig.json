@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "components/element/Header/Header.jsx",
-    "components/element/Sidebar/Sidebar.js"
+    "components/element/Sidebar/Sidebar.js",
+    "pages/paintings/[id]/index.js"
   ],
   "exclude": ["node_modules"]
 }

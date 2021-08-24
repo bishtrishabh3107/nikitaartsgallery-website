@@ -1,8 +1,9 @@
 import React from 'react';
-import { FiInstagram } from 'react-icons/Fi';
-import { FaFacebook } from 'react-icons/Fa';
-import { SiGmail } from 'react-icons/Si';
+import { FiInstagram } from 'react-icons/fi';
+import { FaFacebook } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Link from 'next/link';
 
 function Footer() {
   const style = { fontSize: '1.5em' };
@@ -17,30 +18,30 @@ function Footer() {
               <ul className="list-none footer-links">
                 <li className="mb-2">
                   <AnchorLink href="#FirstScreen">
-                    <a className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
+                    <div className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
                       Spiritual Paintings
-                    </a>
+                    </div>
                   </AnchorLink>
                 </li>
                 <li className="mb-2">
                   <AnchorLink href="#SecondScreen">
-                    <a className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
+                    <div className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
                       Modern Paintings
-                    </a>
+                    </div>
                   </AnchorLink>
                 </li>
                 <li className="mb-2">
                   <AnchorLink href="#ThirdScreen">
-                    <a className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
+                    <div className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
                       Abstract Paintings
-                    </a>
+                    </div>
                   </AnchorLink>
                 </li>
                 <li className="mb-2">
                   <AnchorLink href="#FourthScreen">
-                    <a className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
+                    <div className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800 cursor-pointer">
                       Anime Paintings
-                    </a>
+                    </div>
                   </AnchorLink>
                 </li>
               </ul>
@@ -48,13 +49,8 @@ function Footer() {
             <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
               <h5 className="text-xl font-bold mb-6">Resources</h5>
               <ul className="list-none footer-links">
-                <li className="mb-2">
-                  <a
-                    href="/"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Painting Products
-                  </a>
+                <li className="mb-2 border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
+                  <Link href="/">Painting Products</Link>
                 </li>
               </ul>
             </div>
@@ -63,27 +59,19 @@ function Footer() {
               <ul className="list-none footer-links">
                 <li className="mb-2">
                   <a
-                    href="/"
+                    href="https://instagram.com/nikartssss"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
                   >
                     Team
                   </a>
                 </li>
-                <li className="mb-2">
-                  <a
-                    href="/"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Privacy
-                  </a>
+                <li className="mb-2 border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
+                  <Link href="/">Privacy</Link>
                 </li>
-                <li className="mb-2">
-                  <a
-                    href="/"
-                    className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-                  >
-                    Terms
-                  </a>
+                <li className="mb-2 border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
+                  <Link href="/">Terms</Link>
                 </li>
               </ul>
             </div>
