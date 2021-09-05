@@ -1,0 +1,47 @@
+body {
+  font-family: $site-font;
+  ul {
+    list-style: none !important;
+  }
+  a {
+    text-decoration: none !important;
+  }
+}
+body {
+  --bg: #fff;
+  --primaryText: #000;
+  --secondaryText: #777;
+  background-color: var(--bg);
+  h1 {
+    color: var(--primaryText);
+  }
+}
+body.dark {
+  -webkit-font-smoothing: antialiased;
+  --bg: #222831;
+  --primaryText: #e8e8e8;
+  --secondaryText: #9d9d9d;
+  background-color: var(--bg);
+  h1 {
+    color: var(--primaryText);
+  }
+}
+
+.product-description-font {
+  font-family: $product-description-font;
+  font-size: 12px;
+}
+
+.product-name-font {
+  font-family: $product-name-font;
+  font-size: 10px;
+}
+
+.goodsumpire-font {
+  font-family: $goodsumpire-font;
+  font-size: 12px;
+}
+.product-card-name-font {
+  font-family: $product-card-name-font;
+  font-size: 10px;
+}

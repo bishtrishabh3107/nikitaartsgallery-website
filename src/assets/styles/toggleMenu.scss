@@ -1,0 +1,127 @@
+$dark: #16141a;
+$darker: #090909;
+
+.wrapper {
+  position: fixed;
+  z-index: 100;
+  top: 5px;
+  left: 5px;
+  transform: translate(-50%, -50%);
+}
+
+.menu-button {
+  align-items: center;
+  background: $dark;
+  border: 0.1rem solid $darker;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: 2.5rem;
+  justify-content: center;
+  outline: none;
+  user-select: none;
+  width: 2.5rem;
+}
+
+.dropdown-container {
+  background: $dark;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.6);
+  overflow-x: hidden;
+  position: absolute;
+  top: 1rem;
+  left: 4rem;
+  transition: height 0.5s;
+  width: 17rem;
+  z-index: 200;
+  overflow-y: hidden;
+  border: 0.2rem solid $dark;
+}
+
+.dropdown {
+  align-items: flex-start;
+  display: flex;
+  height: 100%;
+  position: relative;
+  transition: height 0.3s;
+  width: 17rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  height: 100%;
+  width: 17rem;
+
+  h4 {
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 1rem 2rem;
+    text-align: left;
+    transition: all 0.2s;
+    &:hover {
+      color: $dark;
+      background: white;
+    }
+  }
+
+  &.menu-sizes {
+    position: absolute;
+    top: 0;
+    right: -17rem;
+  }
+  &.menu-categories {
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+}
+
+.item-list {
+  list-style-type: none;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .item {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    line-height: 2rem;
+    transition: all 0.2s;
+    color: #18ebfa;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 0px 0px;
+    text-align: left;
+    font-size: 1.4rem;
+
+    &:hover {
+      background: white;
+      color: $dark;
+    }
+  }
+  .item2 {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    line-height: 2rem;
+    transition: all 0.2s;
+    color: rgb(19, 235, 235);
+    margin-left: 10px;
+    margin-right: 1px;
+    padding: 0px 1rem;
+    text-align: left;
+    font-size: 1.1rem;
+    width: 16rem;
+
+    &:hover {
+      background: white;
+      color: $dark;
+    }
+  }
+}
