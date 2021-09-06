@@ -1,16 +1,12 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import "../../assets/styles/index.scss"
-import ProductMainScreenCard from "../atom/ProductMainScreenCard"
+import PaintingMainScreenCard from "../atom/PaintingMainScreenCard"
 import { motion } from "framer-motion"
 import { MdHighQuality } from "react-icons/md"
 import ReactTextTransition, { presets } from "react-text-transition"
 
-const TEXTS = [
-  "TOP KNOTCH QUALITY PRODUCTS",
-  "BEST IN CLASS",
-  "QUALITY IN PRICE",
-]
+const TEXTS = ["ABSTRACT PAINTINGS", "ILLUSTRATION PAINTINGS"]
 
 function FourthScreen() {
   const [index, setIndex] = React.useState(0)
@@ -59,13 +55,13 @@ function FourthScreen() {
                 exit="exit"
                 variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
               >
-                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-3">
-                  {data.allStrapiProduct.edges.map(({ node }) => (
-                    <div key={node.productID} className="m-2">
+                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-3 gap-2 xl:grid-cols-4 xxl:grid-cols-5">
+                  {data.allStrapiPainting.edges.map(({ node }) => (
+                    <div key={node.paintingID} className="m-2">
                       <motion.div variants={thumbnailVariants}>
-                        <ProductMainScreenCard
+                        <PaintingMainScreenCard
                           uid={node.uid}
-                          productID={node.productID}
+                          productID={node.paintingID}
                           image1={
                             node.image1_Child.childImageSharp.gatsbyImageData
                           }
@@ -88,9 +84,9 @@ export default FourthScreen
 
 const FourthScreenQuery = graphql`
   {
-    allStrapiProduct(
+    allStrapiPainting(
       filter: {
-        categories: { elemMatch: { name: { eq: "Top Knotch Quality" } } }
+        categories: { elemMatch: { name: { eq: "Abstract Paintings" } } }
       }
       limit: 6
       sort: { fields: date, order: ASC }
@@ -99,13 +95,13 @@ const FourthScreenQuery = graphql`
         node {
           name
           uid
-          productID
+          paintingID
           image1_Child {
             childImageSharp {
               gatsbyImageData(
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                aspectRatio: 1
+                aspectRatio: 0.9
                 layout: CONSTRAINED
                 transformOptions: { cropFocus: CENTER }
               )

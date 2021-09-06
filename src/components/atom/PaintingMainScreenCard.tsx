@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import "../../assets/styles/index.scss"
 import { Link } from "gatsby"
 
-function ProductMainScreenCard({ uid, image1, name, productID }) {
+function PaintingMainScreenCard({ uid, image1, name, productID }) {
   const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
 
   const thumbnailVariants = {
@@ -21,9 +21,9 @@ function ProductMainScreenCard({ uid, image1, name, productID }) {
       <div key={productID}>
         <motion.div initial="initial" animate="enter" exit="exit">
           <motion.div variants={thumbnailVariants}>
-            <Link className="flex flex-col" to={`/products/${uid}`}>
+            <Link className="flex flex-col" to={`/paintings/${uid}`}>
               <motion.div
-                className="flex flex-col"
+                className="flex flex-col shadow-lg"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -40,4 +40,4 @@ function ProductMainScreenCard({ uid, image1, name, productID }) {
   )
 }
 
-export default ProductMainScreenCard
+export default PaintingMainScreenCard

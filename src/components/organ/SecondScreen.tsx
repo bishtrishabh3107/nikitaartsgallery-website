@@ -1,16 +1,12 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import "../../assets/styles/index.scss"
-import ProductMainScreenCard from "../atom/ProductMainScreenCard"
+import PaintingMainScreenCard from "../atom/PaintingMainScreenCard"
 import { motion } from "framer-motion"
 import { GiLindenLeaf } from "react-icons/gi"
 import ReactTextTransition, { presets } from "react-text-transition"
 
-const TEXTS = [
-  "ENVIRONMENT SAFE PRODUCTS",
-  "ECO FRIENDLY PRODUCTS",
-  "CARBON SAFE PRODUCTS",
-]
+const TEXTS = ["SPIRITUAL PAINTINGS", "GOD PAINTINGS"]
 
 function SecondScreen() {
   const [index, setIndex] = React.useState(0)
@@ -59,13 +55,13 @@ function SecondScreen() {
                 exit="exit"
                 variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
               >
-                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 xxl:grid-cols-3">
-                  {data.allStrapiProduct.edges.map(({ node }) => (
-                    <div key={node.productID} className="m-2">
+                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-3 gap-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-5">
+                  {data.allStrapiPainting.edges.map(({ node }) => (
+                    <div key={node.paintingID} className="m-2">
                       <motion.div variants={thumbnailVariants}>
-                        <ProductMainScreenCard
+                        <PaintingMainScreenCard
                           uid={node.uid}
-                          productID={node.productID}
+                          productID={node.paintingID}
                           image1={
                             node.image1_Child.childImageSharp.gatsbyImageData
                           }
@@ -88,8 +84,10 @@ export default SecondScreen
 
 const SecondScreenQuery = graphql`
   {
-    allStrapiProduct(
-      filter: { categories: { elemMatch: { name: { eq: "Eco Friendly" } } } }
+    allStrapiPainting(
+      filter: {
+        categories: { elemMatch: { name: { eq: "Spiritual Paintings" } } }
+      }
       limit: 6
       sort: { fields: date, order: ASC }
     ) {
@@ -97,13 +95,13 @@ const SecondScreenQuery = graphql`
         node {
           name
           uid
-          productID
+          paintingID
           image1_Child {
             childImageSharp {
               gatsbyImageData(
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                aspectRatio: 2.2
+                aspectRatio: 1
                 layout: CONSTRAINED
                 transformOptions: { cropFocus: CENTER }
               )

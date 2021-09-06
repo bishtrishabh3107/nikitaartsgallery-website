@@ -10,12 +10,12 @@ exports.createResolvers = ({
   const { createNode } = actions
 
   createResolvers({
-    StrapiProduct: {
+    StrapiPainting: {
       image1_Child: {
         type: `File`,
         resolve(source, args, context, info) {
           return createRemoteFileNode({
-            url: `${source.image1.url}`,
+            url: `${source.image.url}`,
             store,
             cache,
             createNode,
@@ -26,7 +26,7 @@ exports.createResolvers = ({
     },
   })
   createResolvers({
-    StrapiProduct: {
+    StrapiPainting: {
       image2_Child: {
         type: `File`,
         resolve(source, args, context, info) {
@@ -42,7 +42,7 @@ exports.createResolvers = ({
     },
   })
   createResolvers({
-    StrapiProduct: {
+    StrapiPainting: {
       image3_Child: {
         type: `File`,
         resolve(source, args, context, info) {
@@ -65,7 +65,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        products: allStrapiProduct {
+        paintings: allStrapiPainting {
           edges {
             node {
               id
@@ -81,16 +81,18 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-  const products = result.data.products.edges
+  const paintings = result.data.paintings.edges
 
-  const ProductTemplate = require.resolve("./src/templates/productTemplate.tsx")
+  const PaintingTemplate = require.resolve(
+    "./src/templates/paintingTemplate.tsx"
+  )
 
-  products.forEach((product, index) => {
+  paintings.forEach((painting, index) => {
     createPage({
-      path: `/products/${slugify(product.node.uid)}`,
-      component: ProductTemplate,
+      path: `/paintings/${slugify(painting.node.uid)}`,
+      component: PaintingTemplate,
       context: {
-        productuid: product.node.uid,
+        paintinguid: painting.node.uid,
       },
     })
   })

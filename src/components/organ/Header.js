@@ -3,7 +3,7 @@ import React from "react"
 import "../../assets/styles/index.scss"
 import { DarkModeSwitch } from "react-toggle-dark-mode"
 import { ThemeToggler } from "gatsby-plugin-dark-mode"
-import GoodsUmpireIcon from "../atom/GoodsUmpireIcon"
+import NikitaArtsGalleryIcon from "../atom/NikitaArtsGalleryIcon"
 import TopHeadline from "../atom/topheadline"
 import { ToogleMenu } from "../atom/ToogleMenu/ToogleMenu"
 // import { motion } from "framer-motion"
@@ -17,7 +17,7 @@ function Header() {
           <ToogleMenu />
         </div>
         <div className="flex flex-row justify-center">
-          <GoodsUmpireIcon />
+          <NikitaArtsGalleryIcon />
         </div>
         <div className="fixed top-10 right-3 z-50">
           <ThemeToggler>

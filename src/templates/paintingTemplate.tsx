@@ -1,26 +1,23 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Global/Layout"
-import ProductPage from "../components/ProductPage"
+import PaintingPage from "../components/PaintingPage"
 import SecondScreen from "../components/organ/SecondScreen"
 import FifthScreen from "../components/organ/FifthScreen"
 import { motion } from "framer-motion"
 
 export const query = graphql`
-  query ($productuid: String!) {
-    allStrapiProduct(filter: { uid: { in: [$productuid] } }) {
+  query ($paintinguid: String!) {
+    allStrapiPainting(filter: { uid: { in: [$paintinguid] } }) {
       edges {
         node {
           name
           uid
           description
+          dimension
           keywords
-          productID
-          rating1
-          rating2
-          rating3
-          amazon_link
-          amazon_price
+          paintingID
+          price
           date(formatString: "DD MM YYYY")
           image1_Child {
             childImageSharp {
@@ -46,22 +43,10 @@ export const query = graphql`
               )
             }
           }
-          image3_Child {
-            childImageSharp {
-              gatsbyImageData(
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-                width: 500
-                height: 400
-                layout: CONSTRAINED
-                transformOptions: { cropFocus: CENTER }
-              )
-            }
-          }
         }
       }
     }
-    strapiProduct(uid: { in: [$productuid] }) {
+    strapiPainting(uid: { in: [$paintinguid] }) {
       name
       description
       keywords
@@ -80,14 +65,14 @@ export const query = graphql`
   }
 `
 
-const ProductTemplate = ({ data }) => {
-  const product = data.strapiProduct
-  var str = product.keywords
+const PaintingTemplate = ({ data }) => {
+  const painting = data.strapiPainting
+  var str = painting.keywords
   var temp = new Array()
   temp = str.split(",")
   const seo = {
-    metaTitle: product.name,
-    metaDescription: product.description,
+    metaTitle: painting.name,
+    metaDescription: painting.description,
     keyword1: temp[0],
     keyword2: temp[1],
     keyword3: temp[2],
@@ -103,7 +88,7 @@ const ProductTemplate = ({ data }) => {
     keyword13: temp[12],
     keyword14: temp[13],
     keyword15: temp[14],
-    shareImage: product.image1,
+    shareImage: painting.image1,
   }
 
   return (
@@ -116,19 +101,15 @@ const ProductTemplate = ({ data }) => {
       >
         <div className="flex flex-col">
           <div className="-mt-20 px-2 mb-10">
-            {data.allStrapiProduct.edges.map(({ node }) => (
-              <div key={node.productID}>
-                <ProductPage
+            {data.allStrapiPainting.edges.map(({ node }) => (
+              <div key={node.paintingID}>
+                <PaintingPage
                   name={node.name}
                   image1={node.image1_Child.childImageSharp.gatsbyImageData}
                   image2={node.image2_Child.childImageSharp.gatsbyImageData}
-                  image3={node.image3_Child.childImageSharp.gatsbyImageData}
+                  dimension={node.dimension}
                   description={node.description}
-                  rating1={node.rating1}
-                  rating2={node.rating2}
-                  rating3={node.rating3}
-                  amazon_price={node.amazon_price}
-                  amazon_link={node.amazon_link}
+                  price={node.price}
                   date={node.date}
                 />
               </div>
@@ -143,4 +124,4 @@ const ProductTemplate = ({ data }) => {
   )
 }
 
-export default ProductTemplate
+export default PaintingTemplate

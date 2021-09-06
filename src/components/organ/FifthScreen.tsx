@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import "../../assets/styles/index.scss"
-import ProductMainScreenCard from "../atom/ProductMainScreenCard"
+import PaintingMainScreenCard from "../atom/PaintingMainScreenCard"
 import { motion } from "framer-motion"
 import { AiOutlineApi } from "react-icons/ai"
 import ReactTextTransition, { presets } from "react-text-transition"
 
-const TEXTS = ["PORTABLE PRODUCTS", "EASY TO MOVE", "EASY TO CARRY"]
+const TEXTS = ["ANIME PAINTINGS", "CARTOON PAINTINGS"]
 
 function FifthScreen() {
   const [index, setIndex] = React.useState(0)
@@ -54,13 +54,13 @@ function FifthScreen() {
                 exit="exit"
                 variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
               >
-                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-3">
-                  {data.allStrapiProduct.edges.map(({ node }) => (
-                    <div key={node.productID} className="m-2">
+                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-3 gap-2 xl:grid-cols-4 xxl:grid-cols-5">
+                  {data.allStrapiPainting.edges.map(({ node }) => (
+                    <div key={node.paintingID} className="m-2">
                       <motion.div variants={thumbnailVariants}>
-                        <ProductMainScreenCard
+                        <PaintingMainScreenCard
                           uid={node.uid}
-                          productID={node.productID}
+                          productID={node.paintingID}
                           image1={
                             node.image1_Child.childImageSharp.gatsbyImageData
                           }
@@ -83,8 +83,8 @@ export default FifthScreen
 
 const FifthScreenQuery = graphql`
   {
-    allStrapiProduct(
-      filter: { categories: { elemMatch: { name: { eq: "Portable" } } } }
+    allStrapiPainting(
+      filter: { categories: { elemMatch: { name: { eq: "Anime Paintings" } } } }
       limit: 6
       sort: { fields: date, order: ASC }
     ) {
@@ -92,13 +92,13 @@ const FifthScreenQuery = graphql`
         node {
           name
           uid
-          productID
+          paintingID
           image1_Child {
             childImageSharp {
               gatsbyImageData(
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                aspectRatio: 2.4
+                aspectRatio: 0.9
                 layout: CONSTRAINED
                 transformOptions: { cropFocus: CENTER }
               )

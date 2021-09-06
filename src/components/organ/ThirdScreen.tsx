@@ -2,11 +2,11 @@ import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import "../../assets/styles/index.scss"
 import { motion } from "framer-motion"
-import ProductMainScreenCard from "../atom/ProductMainScreenCard"
+import PaintingMainScreenCard from "../atom/PaintingMainScreenCard"
 import { BsFillAwardFill } from "react-icons/bs"
 import ReactTextTransition, { presets } from "react-text-transition"
 
-const TEXTS = ["HAT KE PRODUCTs", "UNIQUE PRODUCTS", "HIDDEN GEMS"]
+const TEXTS = ["MODERN PAINTINGS", "NEW AGE PAINTINGS"]
 
 function ThirdScreen() {
   const [index, setIndex] = React.useState(0)
@@ -56,13 +56,13 @@ function ThirdScreen() {
                 exit="exit"
                 variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
               >
-                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5  grid grid-cols-3 xl:grid-cols-6 xxl:grid-cols-6">
-                  {data.allStrapiProduct.edges.map(({ node }) => (
-                    <div className="m-2" key={node.productID}>
+                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5  grid grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 ">
+                  {data.allStrapiPainting.edges.map(({ node }) => (
+                    <div key={node.paintingID} className="m-2">
                       <motion.div variants={thumbnailVariants}>
-                        <ProductMainScreenCard
+                        <PaintingMainScreenCard
                           uid={node.uid}
-                          productID={node.productID}
+                          productID={node.paintingID}
                           image1={
                             node.image1_Child.childImageSharp.gatsbyImageData
                           }
@@ -85,8 +85,10 @@ export default ThirdScreen
 
 const ThirdScreenQuery = graphql`
   {
-    allStrapiProduct(
-      filter: { categories: { elemMatch: { name: { eq: "Hat Ke Products" } } } }
+    allStrapiPainting(
+      filter: {
+        categories: { elemMatch: { name: { eq: "Modern Paintings" } } }
+      }
       limit: 6
       sort: { fields: date, order: ASC }
     ) {
@@ -94,7 +96,7 @@ const ThirdScreenQuery = graphql`
         node {
           name
           uid
-          productID
+          paintingID
           image1_Child {
             childImageSharp {
               gatsbyImageData(

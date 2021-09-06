@@ -127,31 +127,22 @@ export const ToogleMenu = () => {
             </h4>
             <ul className="item-list">
               <li key="1" className="item">
-                <AnchorLink href="#MonthsSpecial">Month's Special</AnchorLink>
+                <AnchorLink href="#Spiritual">Spiritual Paintings</AnchorLink>
               </li>
               <li key="2" className="item">
-                <AnchorLink href="#TopKnotchProducts">
-                  Top Knotch Products
-                </AnchorLink>
+                <AnchorLink href="#Modern">Modern Paintings</AnchorLink>
               </li>
               <li key="3" className="item">
-                <AnchorLink href="#PortableProducts">
-                  Portable Products
-                </AnchorLink>
+                <AnchorLink href="#Abstract">Abstract Paintings</AnchorLink>
               </li>
               <li key="4" className="item">
-                <AnchorLink href="#HatKeProducts">Hat Ke Products</AnchorLink>
+                <AnchorLink href="#Anime">Anime Paintings</AnchorLink>
               </li>
               <li key="5" className="item">
-                <AnchorLink href="#EcoFriendly">
-                  Eco Friendly Products
-                </AnchorLink>
+                <AnchorLink href="#BestSeller">BestSeller Paintings</AnchorLink>
               </li>
               <li key="6" className="item">
-                Advertise
-              </li>
-              <li key="7" className="item">
-                Sell Products
+                Sell your Paintings
               </li>
             </ul>
           </motion.div>
@@ -166,9 +157,9 @@ export const ToogleMenu = () => {
                 render={data => {
                   return (
                     <>
-                      {data.allStrapiProduct.edges.map(({ node }) => (
-                        <li key={node.productID} className="item2">
-                          <Link to={`/products/${node.uid}`}>{node.name}</Link>
+                      {data.allStrapiPainting.edges.map(({ node }) => (
+                        <li key={node.paintingID} className="item2">
+                          <Link to={`/paintings/${node.uid}`}>{node.name}</Link>
                         </li>
                       ))}
                     </>
@@ -185,10 +176,8 @@ export const ToogleMenu = () => {
 
 const MonthsSpecialQuery = graphql`
   {
-    allStrapiProduct(
-      filter: {
-        categories: { elemMatch: { name: { eq: "Product Of This Week" } } }
-      }
+    allStrapiPainting(
+      filter: { categories: { elemMatch: { name: { eq: "Best Sellers" } } } }
       limit: 4
       sort: { fields: createdAt, order: ASC }
     ) {
@@ -196,7 +185,7 @@ const MonthsSpecialQuery = graphql`
         node {
           name
           uid
-          productID
+          paintingID
         }
       }
     }

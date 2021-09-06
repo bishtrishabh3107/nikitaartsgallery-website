@@ -3,7 +3,7 @@ module.exports = {
     title: `GoodsUmpire`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@rishabhbisht`,
-    siteUrl: `https://goodsumpire.com`,
+    siteUrl: `https://nikartsgallery.com`,
   },
   flags: {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
@@ -32,8 +32,8 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: "https://goodsumpiredb.herokuapp.com",
-        collectionTypes: [`product`, `category`],
+        apiURL: "https://nikitaartsgallery.herokuapp.com",
+        collectionTypes: [`painting`, `category`],
         singleTypes: [`global`, `homepage`],
         queryLimit: 2000,
       },

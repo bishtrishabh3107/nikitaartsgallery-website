@@ -1,16 +1,12 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import "../../assets/styles/index.scss"
-import ProductMainScreenCard from "../atom/ProductMainScreenCard"
+import PaintingMainScreenCard from "../atom/PaintingMainScreenCard"
 import { motion } from "framer-motion"
 import { GiStarSwirl } from "react-icons/gi"
 import ReactTextTransition, { presets } from "react-text-transition"
 
-const TEXTS = [
-  "PRODUCTS OF SEPTEMBER",
-  "PRODUCTS OF THIS MONTH",
-  "MONTH'S SPECIAL",
-]
+const TEXTS = ["BEST SELLER PAINTINGS", "MOST POPULAR PAINTINGS"]
 
 function SixthScreen() {
   const [index, setIndex] = React.useState(0)
@@ -35,7 +31,7 @@ function SixthScreen() {
     },
   }
   return (
-    <div className="my-5 my-5">
+    <div className="-mt-20 my-5">
       <h1 className="flex flex-row justify-center goodsumpire-font uppercase font-extrabold text-sm lg:text-lg xl:text-xl xxl:text-8xl">
         <ReactTextTransition
           text={TEXTS[index % TEXTS.length]}
@@ -58,13 +54,13 @@ function SixthScreen() {
                 exit="exit"
                 variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
               >
-                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-3">
-                  {data.allStrapiProduct.edges.map(({ node }) => (
-                    <div key={node.productID} className="m-2">
+                <div className="my-4 sm:mx-2 md:mx-4 lg:mx-10 grid grid-cols-3 gap-2 xl:grid-cols-4 xxl:grid-cols-5">
+                  {data.allStrapiPainting.edges.map(({ node }) => (
+                    <div key={node.paintingID} className="m-2">
                       <motion.div variants={thumbnailVariants}>
-                        <ProductMainScreenCard
+                        <PaintingMainScreenCard
                           uid={node.uid}
-                          productID={node.productID}
+                          productID={node.paintingID}
                           image1={
                             node.image1_Child.childImageSharp.gatsbyImageData
                           }
@@ -87,10 +83,8 @@ export default SixthScreen
 
 const SixthScreenQuery = graphql`
   {
-    allStrapiProduct(
-      filter: {
-        categories: { elemMatch: { name: { eq: "Product Of This Week" } } }
-      }
+    allStrapiPainting(
+      filter: { categories: { elemMatch: { name: { eq: "Best Sellers" } } } }
       limit: 6
       sort: { fields: date, order: ASC }
     ) {
@@ -98,13 +92,13 @@ const SixthScreenQuery = graphql`
         node {
           name
           uid
-          productID
+          paintingID
           image1_Child {
             childImageSharp {
               gatsbyImageData(
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                aspectRatio: 2.4
+                aspectRatio: 0.9
                 layout: CONSTRAINED
                 transformOptions: { cropFocus: CENTER }
               )
