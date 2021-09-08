@@ -71,7 +71,7 @@ const slideVerticalAnimation = {
   },
   close: {
     rotateX: -15,
-    y: -320,
+    y: -330,
     opacity: 0,
     transition: {
       duration: 0.3,
@@ -84,13 +84,13 @@ const slideVerticalAnimation = {
 
 const slideHorizontalAnimation = {
   left: {
-    x: 0,
+    x: -30,
     transition: {
       duration: 0.3,
     },
   },
   right: {
-    x: -280,
+    x: -310,
     transition: {
       duration: 0.3,
     },
@@ -122,8 +122,27 @@ export const ToogleMenu = () => {
           variants={slideHorizontalAnimation}
         >
           <motion.div className="menu menu-categories">
+            <h4 onClick={() => toggleMenu(!isLeftMenu)}>Navigate To &#8594;</h4>
+            <ul className="item-list">
+              <StaticQuery
+                query={MonthsSpecialQuery}
+                render={data => {
+                  return (
+                    <>
+                      {data.allStrapiPainting.edges.map(({ node }) => (
+                        <li key={node.paintingID} className="item2">
+                          <Link to={`/paintings/${node.uid}`}>{node.name}</Link>
+                        </li>
+                      ))}
+                    </>
+                  )
+                }}
+              />
+            </ul>
+          </motion.div>
+          <motion.div className="menu menu-sizes">
             <h4 onClick={() => toggleMenu(!isLeftMenu)}>
-              Month's Special &#8594;
+              &#8592; BEST SELLERS
             </h4>
             <ul className="item-list">
               <li key="1" className="item">
@@ -142,30 +161,10 @@ export const ToogleMenu = () => {
                 <AnchorLink href="#BestSeller">BestSeller Paintings</AnchorLink>
               </li>
               <li key="6" className="item">
-                Sell your Paintings
+                <a href="https://instagram.com/nikartssss" target="_blank">
+                  Sell your Paintings
+                </a>
               </li>
-            </ul>
-          </motion.div>
-          <motion.div className="menu menu-sizes">
-            <h4 onClick={() => toggleMenu(!isLeftMenu)}>
-              {"    "}
-              &#8592; Navigate To
-            </h4>
-            <ul className="item-list">
-              <StaticQuery
-                query={MonthsSpecialQuery}
-                render={data => {
-                  return (
-                    <>
-                      {data.allStrapiPainting.edges.map(({ node }) => (
-                        <li key={node.paintingID} className="item2">
-                          <Link to={`/paintings/${node.uid}`}>{node.name}</Link>
-                        </li>
-                      ))}
-                    </>
-                  )
-                }}
-              />
             </ul>
           </motion.div>
         </motion.div>
@@ -178,7 +177,7 @@ const MonthsSpecialQuery = graphql`
   {
     allStrapiPainting(
       filter: { categories: { elemMatch: { name: { eq: "Best Sellers" } } } }
-      limit: 4
+      limit: 6
       sort: { fields: createdAt, order: ASC }
     ) {
       edges {

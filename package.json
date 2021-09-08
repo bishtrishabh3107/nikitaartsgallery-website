@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "Nik Arts Gallery",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "resolutions": {
-    "sharp": "0.21.1"
-  },
+  "author": "Rishabh Bisht <rishabh.bisht@gmail.com>",
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^2.0.1",
     "@chakra-ui/react": "^1.6.7",
@@ -14,7 +11,7 @@
     "@emotion/styled": "^11.3.0",
     "autoprefixer": "^10.3.3",
     "framer-motion": "^4.1.17",
-    "gatsby": "^3.12.0",
+    "gatsby": "^3.13.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-catch-links": "^3.13.0",
     "gatsby-plugin-dark-mode": "^1.1.2",

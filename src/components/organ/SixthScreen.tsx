@@ -1,111 +1,18 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
-import "../../assets/styles/index.scss"
-import PaintingMainScreenCard from "../atom/PaintingMainScreenCard"
-import { motion } from "framer-motion"
-import { GiStarSwirl } from "react-icons/gi"
-import ReactTextTransition, { presets } from "react-text-transition"
-
-const TEXTS = ["BEST SELLER PAINTINGS", "MOST POPULAR PAINTINGS"]
+import AbstractCarousel from "../atom/AbstractCarousel"
+import BestSellerCarousel from "../atom/BestSellerCarousel"
 
 function SixthScreen() {
-  const [index, setIndex] = React.useState(0)
-
-  React.useEffect(() => {
-    const intervalId = setInterval(
-      () => setIndex(index => index + 1),
-      2000 // every 3 seconds
-    )
-    return () => clearTimeout(intervalId)
-  }, [])
-
-  const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }
-
-  const thumbnailVariants = {
-    initial: { scale: 0.9, opacity: 0 },
-    enter: { scale: 1, opacity: 1, transition },
-    exit: {
-      scale: 0.5,
-      opacity: 0,
-      transition: { duration: 1.5, ...transition },
-    },
-  }
   return (
-    <div className="-mt-20 my-5">
-      <h1 className="flex flex-row justify-center goodsumpire-font uppercase font-extrabold text-sm lg:text-lg xl:text-xl xxl:text-8xl">
-        <ReactTextTransition
-          text={TEXTS[index % TEXTS.length]}
-          springConfig={presets.wobbly}
-        />
-        <div className="text-green-500 flex flex-row mx-1 mt-1">
-          <GiStarSwirl />
-          <GiStarSwirl />
-        </div>
-      </h1>
-      <StaticQuery
-        query={SixthScreenQuery}
-        render={data => {
-          return (
-            <>
-              <motion.div
-                className="thumbnails"
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
-              >
-                <div className="my-4 sm:mx-2 md:mx-4 lg:mx-10 grid grid-cols-3 gap-2 xl:grid-cols-4 xxl:grid-cols-5">
-                  {data.allStrapiPainting.edges.map(({ node }) => (
-                    <div key={node.paintingID} className="m-2">
-                      <motion.div variants={thumbnailVariants}>
-                        <PaintingMainScreenCard
-                          uid={node.uid}
-                          productID={node.paintingID}
-                          image1={
-                            node.image1_Child.childImageSharp.gatsbyImageData
-                          }
-                          name={node.name}
-                        />
-                      </motion.div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </>
-          )
-        }}
-      />
+    <div className="grid grid-cols-2 -mt-24 md:-mt-24 lg:-mt-20 xl:-mt-16 xxl:-mt-16 mb-4 sm:mx-6 md:mx-10 lg:mx-14 xl:mx-16 xxl:mx-20 -mt-2">
+      <div className="sm:mr-2 md:mr-4 lg:mr-6 xl:mr-8 xxl:mr-8">
+        <BestSellerCarousel />
+      </div>
+      <div>
+        <AbstractCarousel />
+      </div>
     </div>
   )
 }
 
 export default SixthScreen
-
-const SixthScreenQuery = graphql`
-  {
-    allStrapiPainting(
-      filter: { categories: { elemMatch: { name: { eq: "Best Sellers" } } } }
-      limit: 6
-      sort: { fields: date, order: ASC }
-    ) {
-      edges {
-        node {
-          name
-          uid
-          paintingID
-          image1_Child {
-            childImageSharp {
-              gatsbyImageData(
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-                aspectRatio: 0.9
-                layout: CONSTRAINED
-                transformOptions: { cropFocus: CENTER }
-              )
-            }
-          }
-        }
-      }
-    }
-  }
-`

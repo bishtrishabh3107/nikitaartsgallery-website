@@ -31,8 +31,8 @@ function SecondScreen() {
     },
   }
   return (
-    <div className="my-5 my-5">
-      <h1 className="flex flex-row justify-center goodsumpire-font uppercase font-extrabold text-sm lg:text-lg xl:text-xl xxl:text-8xl">
+    <div className="my-5 mt-4">
+      <h1 className="flex flex-row justify-start goodsumpire-font uppercase font-extrabold text-sm lg:text-lg xl:text-xl xxl:text-8xl">
         <ReactTextTransition
           text={TEXTS[index % TEXTS.length]}
           springConfig={presets.wobbly}
@@ -55,7 +55,7 @@ function SecondScreen() {
                 exit="exit"
                 variants={{ exit: { transition: { staggerChildren: 0.1 } } }}
               >
-                <div className="sm:mx-2 md:mx-4 lg:mx-10 my-5 grid grid-cols-3 gap-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 xxl:grid-cols-5">
+                <div className="sm:mx-6 md:mx-10 lg:mx-14 xl:mx-16 xxl:mx-20 my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-8 gap-3 lg:gap-4 xl:gap-5 xxl:gap-6">
                   {data.allStrapiPainting.edges.map(({ node }) => (
                     <div key={node.paintingID} className="m-2">
                       <motion.div variants={thumbnailVariants}>

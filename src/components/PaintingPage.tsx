@@ -2,6 +2,7 @@ import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Carousel } from "react-responsive-carousel"
 // import ReactMarkdown from "react-markdown"
+import { FaInstagram } from "react-icons/fa"
 import { HiOutlineBackspace } from "react-icons/hi"
 import { Link } from "gatsby"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
@@ -35,14 +36,14 @@ function PaintingPage({
 
   return (
     <div>
-      <div className="grid md:grid-cols-2 py-4 xl:py-8 xxl:py-8 border-2 lg:border-4 xl:border-8 xxl:border-8 border-indigo-600 divide-x divide-blue-400 shadow-lg shadow-inner sm:grid-cols-1 shadow-lg">
+      <div className="grid md:grid-cols-2 py-2 xl:py-2 xxl:py-2 border-2 lg:border-4 xl:border-8 xxl:border-8 border-indigo-600 divide-x divide-blue-400 shadow-lg shadow-inner sm:grid-cols-1g">
         <div>
-          <div className="product-name-font uppercase text-lg xl:text-3xl xxl:text-9xl font-bold md:mt-6 lg:mt-6 xl:mt-6 xxl:mt-6">
+          <div className="product-name-font uppercase text-lg xl:text-xl xxl:text-9xl font-bold md:mt-6 lg:mt-6 xl:mt-6 xxl:mt-6">
             <h1>{name}</h1>
           </div>
 
           <motion.div
-            className="-mt-20 md:-mt-16 lg:-mt-16 xl:-mt-16 xxl:-mt-16 mx-2"
+            className="-mt-24 md:-mt-28 lg:-mt-32 xl:-mt-32 xxl:-mt-32 mx-2 p-3 md:p-4 lg:p-8 xl:p-10 xxl:p-12"
             initial="initial"
             animate="enter"
             exit="exit"
@@ -65,29 +66,44 @@ function PaintingPage({
                   <GatsbyImage image={getImage(image2)} alt={name} />
                 </div>
               </Carousel>
+              <div className="flex flex-row justify-center font-bold text-xs lg:text-md xl:text-xl xxl:text-2xl mt-2">
+                <h1>Dimensions:</h1>
+                <div className="mx-1 text-yellow-600"> {dimension}</div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
         <motion.div initial="exit" animate="enter" exit="exit">
           <motion.div variants={backVariants}>
-            <div className="px-5 font-bold py-5 flex flex-col">
-              <h1 className="mb-2 text-2xl">
-                <Link to="/">
-                  <HiOutlineBackspace />
-                </Link>
-              </h1>
-              <div className="product-description-font text-left lg:text-lg xl:text-xl xxl:text-2xl">
-                <h1>{description}</h1>
+            <div className="px-3 font-bold py-1 md:py-2 lg:py-4 xl:py-5 xxl:py-6 flex flex-col justify-between">
+              <div>
+                <h1 className="mb-3 md:mb-6 lg:mb-8 xl:mb-10 xxl:mb-12 text-2xl">
+                  <Link to="/">
+                    <HiOutlineBackspace />
+                  </Link>
+                </h1>
+                <h1 className="product-description-font text-left lg:text-md xl:text-lg xxl:text-2xl my-2 md:my-4 lg:my-6 xl:my-8 xxl:my-10">
+                  {description}
+                </h1>
               </div>
-              <div className="flex flex-row text-xs lg:text-lg xl:text-xl xxl:text-2xl">
+              <div className="flex flex-row justify-evenly text-xs lg:text-md xl:text-lg xxl:text-2xl">
                 <h1>Price:</h1>
                 <div className="mx-1 text-green-400">₹ {price}</div>
               </div>
-              <div className="flex flex-row text-xs lg:text-lg xl:text-xl xxl:text-2xl">
-                <h1>Dimensions:</h1>
-                <div className="mx-1 text-green-400"> {dimension}</div>
+              <div className="flex flex-row justify-evenly text-xs lg:text-md xl:text-lg xxl:text-2xl my-2 md:my-4 lg:my-6 xl:my-8 xxl:my-10">
+                <h1>To buy this Painting contact on:</h1>
+                <div className="mx-1 text-green-400 -mt-0.5 lg:-mt-1.5 xl:-mt-1.5 xxl:-mt-1.5">
+                  {" "}
+                  <a
+                    href="https://instagram.com/nikartssss"
+                    className="text-blue-700 text-md lg:text-xl xl:text-2xl xxl:3xl hover:text-blue-500"
+                    target="_blank"
+                  >
+                    <FaInstagram className="instagram-icon" size="1.5em" />
+                  </a>
+                </div>
               </div>
-              <div className="mt-5 text-xs lg:text-lg xl:text-xl xxl:text-2xl">
+              <div className="mt-2 text-xs lg:text-md xl:text-md xxl:text-2xl">
                 <h1>Published On: {date} </h1>
               </div>
             </div>

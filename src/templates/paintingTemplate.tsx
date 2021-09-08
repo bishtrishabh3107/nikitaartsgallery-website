@@ -24,8 +24,6 @@ export const query = graphql`
               gatsbyImageData(
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                width: 500
-                height: 400
                 layout: CONSTRAINED
                 transformOptions: { cropFocus: CENTER }
               )
@@ -36,8 +34,6 @@ export const query = graphql`
               gatsbyImageData(
                 placeholder: BLURRED
                 formats: [AUTO, WEBP, AVIF]
-                width: 500
-                height: 400
                 layout: CONSTRAINED
                 transformOptions: { cropFocus: CENTER }
               )
@@ -116,7 +112,7 @@ const PaintingTemplate = ({ data }) => {
             ))}
           </div>
           <SecondScreen />
-          <hr></hr>
+          <hr className="border-2"></hr>
           <FifthScreen />
         </div>
       </motion.div>

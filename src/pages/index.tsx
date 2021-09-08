@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/Global/Layout"
-// import FirstScreen from "../components/organ/FirstScreen"
+import "../assets/styles/index.scss"
 import SecondScreen from "../components/organ/SecondScreen"
 import ThirdScreen from "../components/organ/ThirdScreen"
 import FourthScreen from "../components/organ/FourthScreen"
@@ -20,23 +20,22 @@ const IndexPage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {/* <FirstScreen /> */}
         <section id="BestSeller">
           <SixthScreen />
         </section>
-        <hr></hr>
+        <hr className="border-2"></hr>
         <section id="Spiritual">
           <SecondScreen />
         </section>
-        <hr></hr>
+        <hr className="border-2"></hr>
         <section id="Modern">
           <ThirdScreen />
         </section>
-        <hr></hr>
+        <hr className="border-2"></hr>
         <section id="Abstract">
           <FourthScreen />
         </section>
-        <hr></hr>
+        <hr className="border-2"></hr>
         <section id="Anime">
           <FifthScreen />
         </section>
