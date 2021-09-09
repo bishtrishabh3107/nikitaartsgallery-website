@@ -1,0 +1,7 @@
+[build]
+  command = "gatsby build"
+  functions = ""
+  publish = "public"
+
+[[plugins]]
+package = "@netlify/plugin-gatsby"
